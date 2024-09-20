@@ -33,3 +33,11 @@ def ejercicio_2():
 # que el usuario lo introduzca muestre por pantalla <NOMBRE> tiene <n> letras, donde
 # <NOMBRE> es el nombre de usuario en mayúsculas y <n> es el número de letras que
 # tienen el nombre.
+def ejercicio_3():
+   nombre = input('Introduce un nombre: ')
+   nombre = nombre.upper()
+   n = len(list(nombre))
+   print(nombre, n)
+
+
+ejercicio_3()
