@@ -38,6 +38,10 @@ def ejercicio_3():
    nombre = nombre.upper()
    n = len(list(nombre))
    print(nombre, n)
-
-
-ejercicio_3()
+    
+# Escribir un programa que muestre por pantalla el resultado de la siguiente operación
+# aritmética:
+#(3+2/2*5)^2
+# - Presentar también la solución para valores desconocidos, es decir leer los datos.
+def ejercicio_4():
+    print(((3+2)/(2 * 5))**2)
