@@ -7,9 +7,10 @@ def check_float(value):
         raise ValueError(f"Valor {value} no se puede convertir a float.")
 
 class Empleado:
-  def __init__(self, n_empleado, ventas):
-    self.name = n_empleado
+  def __init__(self, n_empleado, ventas, sueldo):
+    self.name = self
     self.n_empleado = n_empleado
+    self.sueldo = sueldo
     self.ventas = ventas
-  def mostrar_ventas(self):
-        return f"Empleado {self.n_empleado}, Ventas: {self.ventas}"
+  def mostrar_empleado(self):
+        return f" n_empleado: {self.n_empleado}, ventas:{self.ventas}, sueldo:{self.sueldo}"
