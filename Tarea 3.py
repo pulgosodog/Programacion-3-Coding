@@ -1,5 +1,5 @@
 from funciones_auxiliares import check_float, Empleado
-
+import math
 # EJERCICIO 1
 # Crear una aplicación que dado un monto para presupuesto anual de una
 # fábrica calcule el porcentaje de dinero que le corresponde a cada
@@ -110,21 +110,124 @@ def n_factorial(n):
     n = int(n)
     output = 1
     for i in range(n-1):
-        print('')
-        print('Vez',i+1)
         if(output != 1):
-            print('If')
-            print(f'{output} x {(i+2)}')
             output = output * (i+2)
         else:
-            print('Else')
-            print(f'{(i+1)} x {(i+2)}')
             output = (i+1) * (i+2)
-        print('Output',output)
     return output        
 
 # EJERCICIO 7
 # Escribir el programa que tenga una función, esta devuelva el área de un
 # círculo cuyo radio se le suministra como argumento.    
+def area_circulo(radio):
+    radio = check_float(radio)
+    return round(math.pi*(radio**2),2)
 
-print(n_factorial(input('n veces: ')))
+# EJERCICIO 8
+# Programa para pasar tres argumentos reales a una función que devolverá
+# el menor de ellos.
+
+def menor_de_tres(n1,n2,n3):
+    arr = [n1, n2, n3]
+    for i in range(len(arr)):
+        arr[i] = int(arr[i])
+    arr.sort()
+    return arr
+
+#Ingresar datos de la siguiente manera -> print(menor_de_tres(input('n1 '),input('n2 '),input('n3 ')))
+
+# EJERCICIO 9
+# Crear una función que reciba como argumento el importe de una compra y
+# devuelva la cantidad final a pagar, teniendo en cuenta que los descuentos
+# son del 5% cuando se compra más de 300 €, del 10% cuando se compra
+# más de 500 € y del 12% para cantidades mayores de 500(Lo voy a cambiar a 600 porque es lo mismo que el anterior) €, escribe un
+# programa que pregunte al usuario la cantidad comprada y le indique el
+# importe a pagar.
+
+def final_pagar(importe):
+    importe = check_float(importe)
+    if importe > 600:
+        return f"""Descuento del 12% a {importe}
+Debe pagar {importe * 0.90}"""
+    elif importe > 500:
+        return f"""Descuento del 10% a {importe}
+Debe pagar {importe * 0.90}"""
+    elif importe > 300:
+        return f""""Descuento del 5% a {importe}
+Debe pagar {importe * 0.95}"""
+    else:
+        return f'''Sin descuento aplicable
+Debe pagar {importe}'''
+    
+# EJERCICIO 10
+# Haz un programa que pregunte al usuario un número entero y que
+# mediante una función imprima la tabla de multiplicar (del 1 al 10) de dicho
+# número.
+
+def tabla_multiplicar(n):
+    n = int(n)
+    output = ''''''
+    for i in range(10):
+        output = output + f'''
+{n} x {i+1} = {n*(i+1)}'''
+    return output
+
+def menu():
+    while True:
+        print("""
+        Escribe el número asociado a la herramienta que quieres correr:
+        1. Presupuesto anual por departamento
+        2. Calcular comisiones de empleados de seguros
+        3. Calcular salario con descuento de renta
+        4. Reusar presupuesto anual para fábrica
+        5. Calcular pago por horas trabajadas
+        6. Calcular factorial de un número
+        7. Calcular área de un círculo
+        8. Encontrar el menor de tres números
+        9. Calcular descuento basado en importe de compra
+        10. Imprimir tabla de multiplicar
+        11. Salir
+        """)
+        
+        respuesta = input("Selecciona una opción: ")
+
+        match respuesta:
+            case "1":
+                monto = input("Introduce el monto del presupuesto anual: ")
+                print(presupuesto_anual(monto))
+            case "2":
+                n_empleados = input("Introduce el número de empleados: ")
+                print(comp_seguros(n_empleados))
+            case "3":
+                n_empleados = input("Introduce el número de empleados: ")
+                print(descuento_renta(n_empleados))
+            case "4":
+                monto = input("Introduce el monto del presupuesto anual de la fábrica: ")
+                print(presupuesto_anual(monto))
+            case "5":
+                n_horas = input("Introduce el número de horas trabajadas: ")
+                print(n_horas_trabajadas(n_horas))
+            case "6":
+                n = input("Introduce un número para calcular el factorial: ")
+                print(n_factorial(n))
+            case "7":
+                radio = input("Introduce el radio del círculo: ")
+                print(area_circulo(radio))
+            case "8":
+                n1 = input("Introduce el primer número: ")
+                n2 = input("Introduce el segundo número: ")
+                n3 = input("Introduce el tercer número: ")
+                print(menor_de_tres(n1, n2, n3))
+            case "9":
+                importe = input("Introduce el importe de la compra: ")
+                print(final_pagar(importe))
+            case "10":
+                n = input("Introduce un número para la tabla de multiplicar: ")
+                print(tabla_multiplicar(n))
+            case "11":
+                print("Saliendo del programa...")
+                break
+            case _:
+                print("Escribe un número válido para correr el ejercicio asociado.")
+    
+menu()
